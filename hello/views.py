@@ -26,3 +26,10 @@ def graph(request):
 
     return render(request, 'db.html', {'datapoints': datapoints})
 
+def delete_db(request):
+    confirm = request.GET.get('confirm')
+    if (confirm == "yes"):
+	DataPoint.objects.all().delete()
+	return "Deleted"
+    else:
+	return "Not Deleted"
