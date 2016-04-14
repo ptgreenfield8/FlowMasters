@@ -30,6 +30,6 @@ def delete_db(request):
     confirm = request.GET.get('confirm')
     if (confirm == "yes"):
 	DataPoint.objects.all().delete()
-	return "Deleted"
+	return HttpResponse("Deleted")
     else:
-	return "Not Deleted"
+	return HttpResponse("Not Deleted")
