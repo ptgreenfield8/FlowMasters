@@ -8,11 +8,17 @@
 <h2>Page View Report</h2>
 <script>
 var lineData = [];
+function convertTime(hhmm) {
+    h = hhmm.toString()
+    min = parseInt(h.substr(h.length-2, h.length))
+    hours = parseInt(h.substr(0, h.length-2))*60
+    return(min + hours);
+}
 </script>
 
 {% for dp in datapoints %}
     <script>
-    lineData = lineData.concat([{x: {{dp.x}}, y: {{dp.y}}}]);
+    lineData = lineData.concat([{x: convertTime({{dp.x}}), y: {{dp.y}}}]);
     </script>
 {% endfor %}
 
@@ -40,6 +46,12 @@ var vis = d3.select('#visualisation'),
     })]),
     xAxis = d3.svg.axis()
       .scale(xRange)
+      .tickFormat(function(d){
+	    h = d/60;
+	    hours = Math.floor(h).toString();
+	    min = ((h - Math.floor(h))*60).toString();
+	    return(hours + ":" + min);
+	})
       .tickSize(5)
       .tickSubdivide(true),
     yAxis = d3.svg.axis()
