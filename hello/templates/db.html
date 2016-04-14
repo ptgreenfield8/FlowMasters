@@ -5,7 +5,7 @@
   <div class="container">
 
 
-<h2>Page View Report</h2>
+<h2>Patient Urine Output Data</h2>
 <script>
 var lineData = [];
 function convertTime(hhmm) {
@@ -49,8 +49,14 @@ var vis = d3.select('#visualisation'),
       .tickFormat(function(d){
 	    h = d/60;
 	    hours = Math.floor(h).toString();
-	    min = Math.round(((h - Math.floor(h))*60)).toString();
-	    return(hours + ":" + min);
+	    min = Math.round(((h - Math.floor(h))*60));
+	    out = "";
+            if (min < 10) {
+		out = "0" + min.toString();
+	    } else {
+		out = min.toString();	
+	    }
+	    return(hours + ":" + out);
 	})
       .tickSize(5)
       .tickSubdivide(true),
