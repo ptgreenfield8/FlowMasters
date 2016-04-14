@@ -6,6 +6,24 @@
 
 
 <h2>Page View Report</h2>
+<script>
+var lineData = [];
+</script>
+<ul>
+
+{% for dp in datapoints %}
+    <script>
+    lineData = lineData.concat([{x: {{dp.x}}, y: {{dp.y}}}]);
+    </script>
+    <li>{{dp.x}},{{dp.y}}</li>
+{% endfor %}
+
+<script>
+alert(lineData);
+</script>
+
+</ul>
+
 
 <svg id="visualisation" width="1000" height="500"></svg>
 <script>
@@ -48,15 +66,6 @@ vis.append('svg:g')
   .attr('transform', 'translate(' + (MARGINS.left) + ',0)')
   .call(yAxis);
 </script>
-<ul>
-
-{% for dp in datapoints %}
-    <li>{{dp.x}},{{dp.y}}</li>
-{% endfor %}
-
-
-</ul>
-
 </div>
 
 {% endblock %}
