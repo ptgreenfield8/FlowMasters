@@ -21,6 +21,7 @@ var lineData = [];
 var vis = d3.select('#visualisation'),
     WIDTH = 1000,
     HEIGHT = 500,
+    PADDING = 100,
     MARGINS = {
       top: 20,
       right: 20,
@@ -69,6 +70,16 @@ vis.append('svg:path')
   .attr('stroke', 'blue')
   .attr('stroke-width', 2)
   .attr('fill', 'none');
+
+vis.append("text")
+	.attr("text-anchor", "middle")
+	.attr("transform", "translate(" + (PADDING/2) + "," +(HEIGHT/2)+")rotate(-90)")
+	.text("Urine Output (ml)")
+
+vis.append("text")
+	.attr("text-anchor", "middle")
+	.attr("transform", "translate(" + (WIDTH/2) + "," +(HEIGHT-(PADDING/3))+")")
+	.text("Time")
 </script>
 </div>
 
