@@ -9,21 +9,12 @@
 <script>
 var lineData = [];
 </script>
-<ul>
 
 {% for dp in datapoints %}
     <script>
     lineData = lineData.concat([{x: {{dp.x}}, y: {{dp.y}}}]);
     </script>
-    <li>{{dp.x}},{{dp.y}}</li>
 {% endfor %}
-
-<script>
-alert(lineData);
-</script>
-
-</ul>
-
 
 <svg id="visualisation" width="1000" height="500"></svg>
 <script>

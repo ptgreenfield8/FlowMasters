@@ -20,3 +20,9 @@ def db(request):
 
     return render(request, 'db.html', {'datapoints': datapoints})
 
+def graph(request):
+
+    datapoints = Datapoint.objects.all()
+
+    return render(request, 'db.html', {'datapoints': datapoints})
+
