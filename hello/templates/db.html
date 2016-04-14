@@ -49,7 +49,7 @@ var vis = d3.select('#visualisation'),
       .tickFormat(function(d){
 	    h = d/60;
 	    hours = Math.floor(h).toString();
-	    min = ((h - Math.floor(h))*60).toString();
+	    min = Math.round(((h - Math.floor(h))*60)).toString();
 	    return(hours + ":" + min);
 	})
       .tickSize(5)
